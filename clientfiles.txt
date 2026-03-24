@@ -1,0 +1,467 @@
+/* ═══════════════════════════════════════════════════════════════
+   BODY / MAIN CONTENT
+═══════════════════════════════════════════════════════════════ */
+body,
+.main-content {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGE WRAPPER
+═══════════════════════════════════════════════════════════════ */
+.page-wrapper {
+    max-width: 1000px;
+    padding: var(--space-10) var(--space-5);
+    position: relative;
+    background-image: radial-gradient(ellipse 700px 300px at 80% -60px, var(--brand-glow-faint) 0%, transparent 65%);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   TÍTULO DA PÁGINA
+═══════════════════════════════════════════════════════════════ */
+.page-title {
+    font-size: clamp(1.4rem, 2.5vw, 1.7rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    /* Bolinha laranja antes do título */
+    .page-title::before {
+        content: '';
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--brand-gradient);
+        box-shadow: 0 0 10px var(--brand-glow);
+        flex-shrink: 0;
+    }
+
+/* Linha decorativa */
+.page-title-underline {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-solid) 0%, rgba(239,68,68,.5) 60%, transparent 100%);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-7);
+    animation: underline-grow 0.55s cubic-bezier(0.4, 0, 0.2, 1) both 0.1s;
+}
+
+@keyframes underline-grow {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 60px;
+        opacity: 1;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SEARCH CARD
+═══════════════════════════════════════════════════════════════ */
+.search-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: var(--space-5);
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+    /* Glow ambiente */
+    .search-card::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: -30px;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, var(--brand-glow-faint) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .search-card:focus-within {
+        border-color: var(--border-brand-soft);
+        box-shadow: var(--shadow-sm), 0 0 0 3px rgba(249,115,22,.07);
+    }
+
+    /* ── Input de pesquisa ── */
+    .search-card .form-control {
+        background: var(--bg-input) !important;
+        border: 1px solid var(--border-strong) !important;
+        color: var(--text-primary) !important;
+        border-radius: var(--radius-sm) !important;
+        padding: 9px 14px !important;
+        font-family: var(--font-base) !important;
+        font-size: var(--text-base) !important;
+        flex: 1;
+        position: relative;
+        z-index: 1;
+        transition: border-color var(--transition), box-shadow var(--transition), background var(--transition) !important;
+    }
+
+        .search-card .form-control::placeholder {
+            color: var(--text-disabled) !important;
+        }
+
+        .search-card .form-control:hover:not(:focus) {
+            border-color: rgba(255,255,255,.15) !important;
+        }
+
+        .search-card .form-control:focus {
+            border-color: var(--border-brand) !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(249,115,22,.12) !important;
+            background: #27251f !important;
+        }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTÃO PESQUISAR
+═══════════════════════════════════════════════════════════════ */
+.btn-search {
+    background: var(--brand-gradient);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 9px 22px;
+    font-family: var(--font-base);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: box-shadow var(--transition), transform var(--transition), filter var(--transition);
+    box-shadow: 0 3px 10px var(--brand-glow);
+}
+
+    /* Reflexo interno */
+    .btn-search::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,.14) 0%, transparent 55%);
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    /* Overlay hover */
+    .btn-search::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,.1);
+        opacity: 0;
+        transition: opacity var(--transition);
+        border-radius: inherit;
+    }
+
+    .btn-search:hover {
+        box-shadow: 0 5px 16px var(--brand-glow), 0 2px 6px rgba(0,0,0,.3);
+        transform: translateY(-1px);
+        filter: brightness(1.07);
+    }
+
+        .btn-search:hover::after {
+            opacity: 1;
+        }
+
+    .btn-search:active {
+        transform: translateY(0) scale(0.97);
+        box-shadow: 0 2px 8px var(--brand-glow);
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   TABLE CARD
+═══════════════════════════════════════════════════════════════ */
+.table-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    animation: tbl-in 0.35s cubic-bezier(0.4, 0, 0.2, 1) both 0.08s;
+}
+
+@keyframes tbl-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Cabeçalho ── */
+.table-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+}
+
+.table-card thead tr {
+    background: linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
+    border-bottom: none;
+}
+
+.table-card thead th {
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    padding: 13px 18px;
+    text-align: left;
+    white-space: nowrap;
+    position: relative;
+}
+
+    /* Separadores verticais no header */
+    .table-card thead th + th::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 25%;
+        height: 50%;
+        width: 1px;
+        background: rgba(255,255,255,.18);
+    }
+
+/* ── Linhas ── */
+.table-card tbody tr {
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background var(--transition-fade);
+    position: relative;
+}
+
+    .table-card tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .table-card tbody tr:nth-child(even) {
+        background: rgba(255,255,255,.018);
+    }
+
+    .table-card tbody tr:hover {
+        background: rgba(249,115,22,.055) !important;
+    }
+
+    /* Barra accent laranja no hover */
+    .table-card tbody tr::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--brand-gradient);
+        opacity: 0;
+        transition: opacity var(--transition);
+    }
+
+    .table-card tbody tr:hover::before {
+        opacity: 1;
+    }
+
+/* ── Células ── */
+.table-card tbody td {
+    padding: 12px 18px;
+    color: var(--text-secondary);
+    vertical-align: middle;
+    transition: color var(--transition-fade);
+}
+
+.table-card tbody tr:hover td {
+    color: var(--text-primary);
+}
+
+.table-card tbody td:first-child {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.table-card tbody td.actions-cell,
+.table-card thead th.actions-cell {
+    text-align: right;
+    white-space: nowrap;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BADGES
+═══════════════════════════════════════════════════════════════ */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px 3px 7px;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    transition: filter var(--transition);
+}
+
+    .badge:hover {
+        filter: brightness(1.12);
+    }
+
+    /* Bolinha de estado */
+    .badge::before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    /* Sucesso (verde) */
+    .badge.bg-success {
+        background: var(--color-success-bg);
+        color: var(--color-success);
+        border: 1px solid var(--color-success-border);
+    }
+
+        .badge.bg-success::before {
+            background: var(--color-success);
+            box-shadow: 0 0 5px rgba(34,197,94,.7);
+        }
+
+    /* Perigo / laranja */
+    .badge.bg-danger {
+        background: var(--brand-glow-soft);
+        color: var(--brand-solid);
+        border: 1px solid var(--border-brand-soft);
+    }
+
+        .badge.bg-danger::before {
+            background: var(--brand-solid);
+            box-shadow: 0 0 5px var(--brand-glow);
+        }
+
+    /* Cancelado (vermelho puro — bonus) */
+    .badge.bg-canceled {
+        background: var(--color-danger-bg);
+        color: var(--color-danger);
+        border: 1px solid var(--color-danger-border);
+    }
+
+        .badge.bg-canceled::before {
+            background: var(--color-danger);
+            box-shadow: 0 0 5px rgba(239,68,68,.7);
+        }
+
+    /* Pendente (amarelo — bonus) */
+    .badge.bg-warning {
+        background: var(--color-warning-bg);
+        color: var(--color-warning);
+        border: 1px solid var(--color-warning-border);
+    }
+
+        .badge.bg-warning::before {
+            background: var(--color-warning);
+            box-shadow: 0 0 5px rgba(245,158,11,.7);
+        }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   EMPTY STATE
+═══════════════════════════════════════════════════════════════ */
+.empty-state {
+    text-align: center;
+    padding: 52px 24px;
+    color: var(--text-muted);
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+    /* Ícone de estado vazio */
+    .empty-state i,
+    .empty-state .empty-icon {
+        font-size: 2.4rem;
+        color: var(--text-disabled);
+        display: block;
+        opacity: 0.6;
+    }
+
+    .empty-state p {
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--text-muted);
+        margin: 0;
+        max-width: 280px;
+        line-height: 1.5;
+    }
+
+    /* Linha decorativa acima do empty state */
+    .empty-state::before {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 2px;
+        background: var(--border-medium);
+        border-radius: var(--radius-full);
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    .search-card {
+        flex-wrap: wrap;
+    }
+
+        .search-card .form-control {
+            min-width: 0;
+            width: 100%;
+            flex: 1 1 100%;
+        }
+
+    .btn-search {
+        width: 100%;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+        .table-card thead th,
+        .table-card tbody td {
+            padding: 10px 12px;
+        }
+}

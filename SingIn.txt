@@ -1,0 +1,389 @@
+/* ═══════════════════════════════════════════════════════════════
+   SIGN IN PAGE — Layout centrado
+═══════════════════════════════════════════════════════════════ */
+
+/* O MainContent precisa de centrar verticalmente */
+#MainContent,
+.main-content-wrapper,
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-dark);
+    padding: var(--space-10) var(--space-5);
+    position: relative;
+    overflow: hidden;
+}
+
+    /* Mesh radial duplo no fundo */
+    #MainContent::before,
+    .main-content-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 500px;
+        background: radial-gradient(ellipse at center, rgba(249,115,22,.07) 0%, rgba(239,68,68,.03) 45%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    #MainContent::after,
+    .main-content-wrapper::after {
+        content: '';
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        height: 280px;
+        background: radial-gradient(ellipse at center, rgba(249,115,22,.04) 0%, transparent 65%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   FORM — CARD DE LOGIN
+═══════════════════════════════════════════════════════════════ */
+.page-box {
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-xl);
+    padding: 40px 40px 36px;
+    box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255,255,255,.04), 0 0 60px rgba(249,115,22,.06);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: login-card-in 0.45s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+
+@keyframes login-card-in {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Linha brilhante no topo do card */
+.page-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    width: 84%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(249,115,22,.45) 35%, rgba(239,68,68,.3) 65%, transparent);
+    pointer-events: none;
+}
+
+/* Glow ambiente */
+.page-box::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(249,115,22,.055) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+/* Logo / título do form (opcional — adiciona antes dos inputs) */
+.page-box-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    position: relative;
+    z-index: 1;
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.page-box-brand {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius);
+    background: var(--brand-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 6px 18px var(--brand-glow), 0 12px 30px rgba(249,115,22,.15);
+    position: relative;
+}
+
+    .page-box-brand::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(160deg, rgba(255,255,255,.2) 0%, transparent 55%);
+    }
+
+    .page-box-brand i,
+    .page-box-brand svg {
+        color: #fff;
+        font-size: 1.2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+.page-box-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.2px;
+    margin: 0;
+}
+
+.page-box-subtitle {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    font-weight: 500;
+    margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CAMPO DE INPUT
+═══════════════════════════════════════════════════════════════ */
+.page-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    position: relative;
+    z-index: 1;
+}
+
+    /* Label */
+    .page-input-box .form-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--brand-text);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 0;
+    }
+
+        .page-input-box .form-label::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 1.5px;
+            background: var(--brand-solid);
+            border-radius: var(--radius-full);
+            opacity: .65;
+            flex-shrink: 0;
+        }
+
+    /* Input */
+    .page-input-box .form-control {
+        background: var(--bg-input) !important;
+        border: 1px solid var(--border-strong) !important;
+        color: var(--text-primary) !important;
+        border-radius: var(--radius-sm) !important;
+        padding: 11px 14px !important;
+        font-family: var(--font-base) !important;
+        font-size: var(--text-base) !important;
+        width: 100%;
+        transition: border-color var(--transition), box-shadow var(--transition), background var(--transition) !important;
+        box-shadow: none !important;
+    }
+
+        .page-input-box .form-control::placeholder {
+            color: var(--text-disabled) !important;
+        }
+
+        .page-input-box .form-control:hover:not(:focus) {
+            border-color: rgba(255,255,255,.16) !important;
+        }
+
+        .page-input-box .form-control:focus {
+            border-color: var(--border-brand) !important;
+            box-shadow: 0 0 0 3px rgba(249,115,22,.13) !important;
+            outline: none !important;
+            background: #27251f !important;
+        }
+
+    /* Estado de erro (DotVVM has-error) */
+    .page-input-box.has-error .form-control {
+        border-color: rgba(239,68,68,.55) !important;
+        box-shadow: 0 0 0 3px rgba(239,68,68,.10) !important;
+    }
+
+    .page-input-box.has-error .form-label {
+        color: var(--color-danger);
+    }
+
+    /* Texto de ajuda */
+    .page-input-box .form-text {
+        font-size: var(--text-xs);
+        color: var(--text-muted);
+        line-height: 1.45;
+        margin: 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+        .page-input-box .form-text::before {
+            content: '↳';
+            font-size: 0.75em;
+            color: var(--text-disabled);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   LINHA "RELEMBRAR"
+═══════════════════════════════════════════════════════════════ */
+.page-box-login {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 10px 13px;
+    background: rgba(249,115,22,.05);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--brand-solid);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+    .page-box-login::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 60px;
+        background: linear-gradient(90deg, rgba(249,115,22,.07), transparent);
+        pointer-events: none;
+    }
+
+    .page-box-login .form-check-input {
+        accent-color: var(--brand-solid);
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+        margin: 0;
+    }
+
+    .page-box-login .form-check-label {
+        color: var(--text-secondary);
+        font-size: var(--text-sm);
+        font-weight: 600;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        transition: color var(--transition);
+    }
+
+    .page-box-login:has(.form-check-input:checked) .form-check-label {
+        color: var(--text-primary);
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTÃO CONTAINER + BOTÃO
+═══════════════════════════════════════════════════════════════ */
+.btn-container {
+    position: relative;
+    z-index: 1;
+}
+
+.page-button {
+    width: 100%;
+    background: var(--brand-gradient) !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 13px var(--space-6) !important;
+    font-family: var(--font-base) !important;
+    font-size: var(--text-sm) !important;
+    font-weight: 800 !important;
+    border-radius: var(--radius-sm) !important;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow var(--transition), transform var(--transition), filter var(--transition) !important;
+    box-shadow: 0 4px 14px var(--brand-glow), 0 2px 4px rgba(0,0,0,.25) !important;
+}
+
+    /* Reflexo interno */
+    .page-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, transparent 100%);
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    /* Shimmer sweep */
+    .page-button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+        transition: left 0.45s ease;
+        pointer-events: none;
+    }
+
+    .page-button:hover {
+        box-shadow: 0 6px 22px var(--brand-glow), 0 3px 8px rgba(0,0,0,.3) !important;
+        transform: translateY(-2px);
+        filter: brightness(1.06);
+    }
+
+        .page-button:hover::after {
+            left: 150%;
+        }
+
+    .page-button:active {
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 2px 10px var(--brand-glow) !important;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 520px) {
+    .page-box {
+        padding: 28px 24px;
+        border-radius: var(--radius-lg);
+        gap: var(--space-4);
+    }
+}

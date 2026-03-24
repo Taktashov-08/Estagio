@@ -1,0 +1,411 @@
+/* ═══════════════════════════════════════════════════════════════
+   PAGE CONTAINER
+═══════════════════════════════════════════════════════════════ */
+.page-container {
+    padding: var(--space-10) 44px var(--space-10) 40px;
+    min-height: 100vh;
+    background: var(--bg-dark);
+    position: relative;
+    background-image: radial-gradient(ellipse 700px 320px at 65% -50px, var(--brand-glow-faint) 0%, transparent 65%);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGE HEADER
+═══════════════════════════════════════════════════════════════ */
+.page-header {
+    margin-bottom: var(--space-8);
+    padding-bottom: 16px;
+    position: relative;
+}
+
+    .page-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, var(--brand-solid) 0%, rgba(249,115,22,.22) 45%, transparent 80%);
+    }
+
+    .page-header h1 {
+        color: var(--text-primary);
+        font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+        font-weight: 800;
+        margin: 0;
+        letter-spacing: -0.3px;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .page-header h1::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--brand-gradient);
+            box-shadow: 0 0 8px var(--brand-glow);
+            flex-shrink: 0;
+        }
+
+    .page-header p {
+        color: var(--text-muted);
+        font-size: var(--text-sm);
+        margin: 5px 0 0 18px;
+        line-height: 1.5;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   FORM CARD
+═══════════════════════════════════════════════════════════════ */
+.form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    max-width: 700px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    animation: form-card-in 0.35s cubic-bezier(0.4, 0, 0.2, 1) both 0.05s;
+}
+
+@keyframes form-card-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(249,115,22,.04) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.form-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    width: 84%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(249,115,22,.22) 40%, rgba(239,68,68,.14) 60%, transparent);
+    pointer-events: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DANGER BANNER
+═══════════════════════════════════════════════════════════════ */
+.danger-banner {
+    background: var(--color-danger-bg);
+    border: 1px solid var(--color-danger-border);
+    color: #f87171;
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    line-height: 1.55;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    animation: alert-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) both 0.12s;
+}
+
+@keyframes alert-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Barra de perigo no topo */
+.danger-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-danger) 35%, var(--color-danger) 65%, transparent);
+}
+
+/* Glow subtil interno */
+.danger-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(239,68,68,.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.danger-banner i {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--color-danger);
+    margin-bottom: var(--space-2);
+    position: relative;
+    z-index: 1;
+}
+
+.danger-banner p,
+.danger-banner span {
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+
+.danger-banner strong {
+    color: #fca5a5;
+    font-weight: 700;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DETAILS SECTION
+═══════════════════════════════════════════════════════════════ */
+.details-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   LABEL
+═══════════════════════════════════════════════════════════════ */
+.form-label-dark {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--brand-text);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .form-label-dark::before {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 1.5px;
+        background: var(--brand-solid);
+        border-radius: var(--radius-full);
+        opacity: .65;
+        flex-shrink: 0;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DATA DISPLAY
+═══════════════════════════════════════════════════════════════ */
+.data-display {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding-left: 3px;
+    line-height: 1.4;
+}
+
+/* Separador visual entre campos */
+.form-row + .form-row {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-faint);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CODE HIGHLIGHT
+═══════════════════════════════════════════════════════════════ */
+.code-highlight {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    color: var(--color-info);
+    font-weight: 700;
+    font-size: 0.95em;
+    background: var(--color-info-bg);
+    border: 1px solid var(--color-info-border);
+    padding: 2px 8px;
+    border-radius: var(--radius-xs);
+    letter-spacing: 0.3px;
+    display: inline-block;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   FORM ACTIONS
+═══════════════════════════════════════════════════════════════ */
+.form-actions {
+    margin-top: var(--space-8);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTÃO CANCELAR
+═══════════════════════════════════════════════════════════════ */
+.btn-cancel {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    transition: color var(--transition);
+    padding: 4px 2px;
+    position: relative;
+}
+
+    .btn-cancel::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--text-secondary);
+        transition: width var(--transition);
+        border-radius: var(--radius-full);
+    }
+
+    .btn-cancel:hover {
+        color: var(--text-primary);
+    }
+
+        .btn-cancel:hover::after {
+            width: 100%;
+        }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTÃO ELIMINAR (danger)
+═══════════════════════════════════════════════════════════════ */
+.btn-danger-custom {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: #fff;
+    border: none;
+    padding: 11px 26px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-base);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow var(--transition), transform var(--transition), filter var(--transition);
+    box-shadow: 0 3px 12px rgba(239,68,68,.35);
+}
+
+    /* Reflexo interno */
+    .btn-danger-custom::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,.14) 0%, transparent 55%);
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    /* Shimmer sweep */
+    .btn-danger-custom::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+        transition: left 0.42s ease;
+        pointer-events: none;
+    }
+
+    .btn-danger-custom:hover {
+        box-shadow: 0 6px 20px rgba(239,68,68,.45), 0 2px 6px rgba(0,0,0,.3);
+        transform: translateY(-2px);
+        filter: brightness(1.07);
+    }
+
+        .btn-danger-custom:hover::after {
+            left: 150%;
+        }
+
+    .btn-danger-custom:active {
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 2px 10px rgba(239,68,68,.35);
+    }
+
+    .btn-danger-custom:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+        pointer-events: none;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .page-container {
+        padding: var(--space-6) var(--space-5);
+    }
+
+    .form-card {
+        padding: var(--space-6) var(--space-5);
+        max-width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: var(--space-3);
+    }
+
+    .btn-danger-custom {
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-cancel {
+        text-align: center;
+        width: 100%;
+    }
+}

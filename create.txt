@@ -1,0 +1,402 @@
+/* ═══════════════════════════════════════════════════════════════
+   CONTENT WRAPPER (centrado — login / auth)
+═══════════════════════════════════════════════════════════════ */
+.admin-content-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-10) var(--space-5);
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+    /* Mesh radial duplo — profundidade de fundo */
+    .admin-content-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 500px;
+        background: radial-gradient(ellipse at center, rgba(249,115,22,.07) 0%, rgba(239,68,68,.03) 45%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .admin-content-wrapper::after {
+        content: '';
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        height: 300px;
+        background: radial-gradient(ellipse at center, rgba(249,115,22,.04) 0%, transparent 65%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════════════════════════ */
+.custom-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255,255,255,.04), 0 0 60px rgba(249,115,22,.06);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    animation: card-appear 0.45s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+
+@keyframes card-appear {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Linha brilhante no topo do card */
+.custom-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    width: 84%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(249,115,22,.45) 35%, rgba(239,68,68,.3) 65%, transparent);
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CARD HEADER
+═══════════════════════════════════════════════════════════════ */
+.custom-card-header {
+    padding: 28px 32px 24px;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, rgba(249,115,22,.06) 0%, transparent 100%);
+}
+
+    /* Linha de separação gradiente */
+    .custom-card-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--border-brand-soft) 40%, rgba(239,68,68,.2) 60%, transparent);
+    }
+
+    /* Logo / ícone acima do título (bonus) */
+    .custom-card-header .card-brand-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius);
+        background: var(--brand-gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 14px;
+        box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 6px 18px var(--brand-glow), 0 12px 30px rgba(249,115,22,.15);
+        position: relative;
+    }
+
+        .custom-card-header .card-brand-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(160deg, rgba(255,255,255,.2) 0%, transparent 55%);
+        }
+
+        .custom-card-header .card-brand-icon svg,
+        .custom-card-header .card-brand-icon i {
+            color: #fff;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+    .custom-card-header h4 {
+        color: var(--text-primary);
+        margin: 0 0 5px;
+        font-weight: 800;
+        font-size: 1.15rem;
+        letter-spacing: -0.2px;
+    }
+
+    /* Subtítulo opcional no header */
+    .custom-card-header .card-header-sub {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        margin: 0;
+        font-weight: 500;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CARD BODY
+═══════════════════════════════════════════════════════════════ */
+.custom-card-body {
+    padding: 28px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   LABELS
+═══════════════════════════════════════════════════════════════ */
+.custom-label {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    margin-bottom: var(--space-2);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .custom-label::before {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 1.5px;
+        background: var(--brand-solid);
+        border-radius: var(--radius-full);
+        opacity: .6;
+        flex-shrink: 0;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   INPUTS
+═══════════════════════════════════════════════════════════════ */
+.custom-input {
+    background: var(--bg-input) !important;
+    border: 1px solid var(--border-strong) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 11px 14px !important;
+    font-family: var(--font-base) !important;
+    font-size: var(--text-base) !important;
+    width: 100%;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition) !important;
+}
+
+    .custom-input::placeholder {
+        color: var(--text-disabled) !important;
+    }
+
+    .custom-input:hover:not(:focus):not(:disabled) {
+        border-color: rgba(255,255,255,.16) !important;
+    }
+
+    .custom-input:focus {
+        border-color: var(--border-brand) !important;
+        box-shadow: 0 0 0 3px rgba(249,115,22,.13) !important;
+        outline: none !important;
+        background: #27251f !important;
+    }
+
+    /* Estado de erro */
+    .custom-input.is-invalid {
+        border-color: rgba(239,68,68,.55) !important;
+        box-shadow: 0 0 0 3px rgba(239,68,68,.10) !important;
+    }
+
+/* Wrapper para input com ícone */
+.input-icon-wrap {
+    position: relative;
+}
+
+    .input-icon-wrap .custom-input {
+        padding-left: 40px !important;
+    }
+
+    .input-icon-wrap .input-icon {
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        pointer-events: none;
+        transition: color var(--transition);
+    }
+
+    .input-icon-wrap:focus-within .input-icon {
+        color: var(--brand-solid);
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTÃO PRINCIPAL
+═══════════════════════════════════════════════════════════════ */
+.btn-admin-primary {
+    background: var(--brand-gradient);
+    color: #fff;
+    border: none;
+    padding: 13px var(--space-6);
+    font-family: var(--font-base);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow var(--transition), transform var(--transition), filter var(--transition);
+    box-shadow: 0 4px 14px var(--brand-glow), 0 2px 4px rgba(0,0,0,.25);
+}
+
+    /* Reflexo interno */
+    .btn-admin-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, transparent 100%);
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    /* Shimmer no hover */
+    .btn-admin-primary::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+        transition: left 0.45s ease;
+        pointer-events: none;
+    }
+
+    .btn-admin-primary:hover {
+        box-shadow: 0 6px 22px var(--brand-glow), 0 3px 8px rgba(0,0,0,.3);
+        transform: translateY(-2px);
+        filter: brightness(1.06);
+    }
+
+        .btn-admin-primary:hover::after {
+            left: 150%;
+        }
+
+    .btn-admin-primary:active {
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 2px 10px var(--brand-glow);
+    }
+
+    .btn-admin-primary:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+        pointer-events: none;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   TEXTO SECUNDÁRIO
+═══════════════════════════════════════════════════════════════ */
+.text-secondary-light {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+}
+
+    .text-secondary-light a {
+        color: var(--brand-text);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color var(--transition);
+        position: relative;
+    }
+
+        .text-secondary-light a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--brand-light);
+            transition: width var(--transition);
+            border-radius: var(--radius-full);
+        }
+
+        .text-secondary-light a:hover {
+            color: var(--brand-light);
+        }
+
+            .text-secondary-light a:hover::after {
+                width: 100%;
+            }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DIVISOR "OU" (bonus)
+═══════════════════════════════════════════════════════════════ */
+.form-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-disabled);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+    .form-divider::before,
+    .form-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border-subtle);
+        border-radius: var(--radius-full);
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 520px) {
+    .custom-card {
+        border-radius: var(--radius-lg);
+    }
+
+    .custom-card-header {
+        padding: 22px 20px 20px;
+    }
+
+    .custom-card-body {
+        padding: 22px 20px 26px;
+        gap: var(--space-4);
+    }
+}

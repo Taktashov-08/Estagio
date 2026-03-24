@@ -1,0 +1,425 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS LOCAIS (frontend claro)
+   — usa estes se não tiveres um base.css público
+═══════════════════════════════════════════════════════════════ */
+:root {
+    --pub-orange: #f97316;
+    --pub-orange-dark: #ea580c;
+    --pub-orange-light: #fed7aa;
+    --pub-orange-glow: rgba(249,115,22,.18);
+    --pub-orange-soft: rgba(249,115,22,.08);
+    --pub-grad: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+    --pub-bg: #fafaf9;
+    --pub-card: #ffffff;
+    --pub-border: rgba(0,0,0,.08);
+    --pub-border-hover: rgba(249,115,22,.35);
+    --pub-text: #1c1917;
+    --pub-text-secondary: #6b7280;
+    --pub-text-muted: #9ca3af;
+    --pub-radius: 16px;
+    --pub-radius-sm: 8px;
+    --pub-shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+    --pub-shadow-md: 0 4px 16px rgba(0,0,0,.09), 0 2px 6px rgba(0,0,0,.06);
+    --pub-shadow-lg: 0 12px 32px rgba(0,0,0,.12), 0 4px 10px rgba(0,0,0,.07);
+    --pub-shadow-orange: 0 8px 24px rgba(249,115,22,.22);
+    --pub-transition: 0.22s ease;
+    --pub-spring: 0.35s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   GRID
+═══════════════════════════════════════════════════════════════ */
+.custom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1100px) {
+    .custom-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .custom-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CARTÃO
+═══════════════════════════════════════════════════════════════ */
+.accommodation-card {
+    border-radius: var(--pub-radius);
+    overflow: hidden;
+    border: 1px solid var(--pub-border);
+    background: var(--pub-card);
+    box-shadow: var(--pub-shadow-sm);
+    transition: transform var(--pub-spring), box-shadow var(--pub-transition), border-color var(--pub-transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+    .accommodation-card:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: var(--pub-shadow-lg), var(--pub-shadow-orange);
+        border-color: var(--pub-border-hover);
+    }
+
+    /* Linha de accent no topo ao hover */
+    .accommodation-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--pub-grad);
+        opacity: 0;
+        transition: opacity var(--pub-transition);
+        z-index: 2;
+        border-radius: var(--pub-radius) var(--pub-radius) 0 0;
+    }
+
+    .accommodation-card:hover::before {
+        opacity: 1;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   WRAPPER DA IMAGEM
+═══════════════════════════════════════════════════════════════ */
+.card-img-wrapper {
+    position: relative;
+    height: 210px;
+    width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #f3f2f0;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accommodation-card:hover .card-img {
+    transform: scale(1.05);
+}
+
+/* Overlay gradient subtil no fundo da imagem */
+.card-img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.28) 100%);
+    pointer-events: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PLACEHOLDER (sem imagem)
+═══════════════════════════════════════════════════════════════ */
+.placeholder-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(135deg, #fef3e9 0%, #fde8d0 100%);
+    font-size: 48px;
+    color: var(--pub-orange);
+    position: relative;
+}
+
+    /* Padrão de fundo subtil no placeholder */
+    .placeholder-img::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(249,115,22,.08) 1px, transparent 1px);
+        background-size: 20px 20px;
+        pointer-events: none;
+    }
+
+    .placeholder-img > * {
+        position: relative;
+        z-index: 1;
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BADGE CÓDIGO
+═══════════════════════════════════════════════════════════════ */
+.badge-code {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: var(--pub-radius-sm);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    z-index: 3;
+    border: 1px solid rgba(255,255,255,.12);
+    transition: background var(--pub-transition);
+}
+
+.accommodation-card:hover .badge-code {
+    background: rgba(249,115,22,.85);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CORPO DO CARD
+═══════════════════════════════════════════════════════════════ */
+.card-body-custom {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 4px;
+}
+
+.accommodation-title {
+    font-weight: 800;
+    font-size: 1.02rem;
+    color: var(--pub-text);
+    margin: 0 0 4px;
+    line-height: 1.3;
+    letter-spacing: -0.1px;
+    transition: color var(--pub-transition);
+}
+
+.accommodation-card:hover .accommodation-title {
+    color: var(--pub-orange-dark);
+}
+
+.accommodation-location {
+    color: var(--pub-text-secondary);
+    font-size: 0.83rem;
+    font-weight: 500;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.4;
+}
+
+    /* Ícone de pin antes da localização */
+    .accommodation-location::before {
+        content: '📍';
+        font-size: 0.75em;
+        flex-shrink: 0;
+    }
+
+/* Empurra os botões para o fundo */
+.card-body-custom > .card-buttons {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,.06);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTÕES DO CARD
+═══════════════════════════════════════════════════════════════ */
+.card-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Base partilhada */
+.btn-edit,
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: var(--pub-radius-sm);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background var(--pub-transition), color var(--pub-transition), border-color var(--pub-transition), transform var(--pub-transition), box-shadow var(--pub-transition);
+}
+
+    .btn-edit:active,
+    .btn-delete:active {
+        transform: scale(0.96);
+    }
+
+/* Editar */
+.btn-edit {
+    border: 1px solid rgba(0,0,0,.12);
+    color: #374151;
+    background: #f9fafb;
+}
+
+    .btn-edit:hover {
+        background: var(--pub-text);
+        color: #fff;
+        border-color: var(--pub-text);
+        box-shadow: 0 3px 8px rgba(0,0,0,.15);
+        transform: translateY(-1px);
+    }
+
+/* Apagar */
+.btn-delete {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid rgba(220,38,38,.18);
+}
+
+    .btn-delete:hover {
+        background: #dc2626;
+        color: #fff;
+        border-color: #dc2626;
+        box-shadow: 0 3px 8px rgba(220,38,38,.25);
+        transform: translateY(-1px);
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTÃO LARANJA (CTA principal)
+═══════════════════════════════════════════════════════════════ */
+.btn-orange {
+    background: var(--pub-grad);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: var(--pub-radius-sm);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow var(--pub-transition), transform var(--pub-transition), filter var(--pub-transition);
+    box-shadow: 0 3px 10px var(--pub-orange-glow);
+    letter-spacing: 0.1px;
+}
+
+    .btn-orange::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, transparent 55%);
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    .btn-orange::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+        transition: left 0.42s ease;
+        pointer-events: none;
+    }
+
+    .btn-orange:hover {
+        box-shadow: 0 5px 18px var(--pub-orange-glow), 0 2px 6px rgba(0,0,0,.1);
+        transform: translateY(-2px);
+        filter: brightness(1.06);
+    }
+
+        .btn-orange:hover::after {
+            left: 150%;
+        }
+
+    .btn-orange:active {
+        transform: translateY(0) scale(0.97);
+        box-shadow: 0 2px 8px var(--pub-orange-glow);
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMAÇÃO FADE-IN (stagger)
+═══════════════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Stagger automático nos primeiros 8 cards */
+.custom-grid .accommodation-card:nth-child(1) {
+    animation-delay: 0.04s;
+}
+
+.custom-grid .accommodation-card:nth-child(2) {
+    animation-delay: 0.09s;
+}
+
+.custom-grid .accommodation-card:nth-child(3) {
+    animation-delay: 0.14s;
+}
+
+.custom-grid .accommodation-card:nth-child(4) {
+    animation-delay: 0.19s;
+}
+
+.custom-grid .accommodation-card:nth-child(5) {
+    animation-delay: 0.24s;
+}
+
+.custom-grid .accommodation-card:nth-child(6) {
+    animation-delay: 0.29s;
+}
+
+.custom-grid .accommodation-card:nth-child(7) {
+    animation-delay: 0.34s;
+}
+
+.custom-grid .accommodation-card:nth-child(8) {
+    animation-delay: 0.39s;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ESTADO VAZIO
+═══════════════════════════════════════════════════════════════ */
+.grid-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--pub-text-muted);
+}
+
+    .grid-empty i {
+        font-size: 2.5rem;
+        display: block;
+        margin-bottom: 12px;
+        color: var(--pub-orange-light);
+    }
+
+    .grid-empty p {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }

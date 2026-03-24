@@ -1,0 +1,245 @@
+/* ═══════════════════════════════════════════════════════════════
+   PAGE CONTAINER
+═══════════════════════════════════════════════════════════════ */
+.page-container {
+    padding: var(--space-10) 44px;
+    min-height: 100vh;
+    background: var(--bg-dark);
+    position: relative;
+    /* Mesh ambient laranja no canto superior */
+    background-image: radial-gradient(ellipse 700px 400px at 70% -80px, var(--brand-glow-faint) 0%, transparent 65%);
+}
+
+
+    /* ── Eyebrow (h4) ── */
+    .page-container h4 {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 2.8px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: var(--space-2);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+        /* Linha decorativa antes do eyebrow */
+        .page-container h4::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 2px;
+            background: var(--brand-gradient);
+            border-radius: var(--radius-full);
+            flex-shrink: 0;
+        }
+
+
+    /* ── Título principal (h1) ── */
+    .page-container h1 {
+        font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--space-8);
+        display: block;
+        line-height: 1.25;
+        letter-spacing: -0.3px;
+    }
+
+        .page-container h1 strong {
+            color: var(--brand-solid);
+            font-weight: 800;
+            position: relative;
+            /* Glow subtil no texto laranja */
+            text-shadow: 0 0 28px rgba(249, 115, 22, 0.35);
+        }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MENSAGENS PRINCIPAL
+═══════════════════════════════════════════════════════════════ */
+.mensagens-principal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+    max-width: 1000px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CARDS
+═══════════════════════════════════════════════════════════════ */
+.page-container .mensagens-principal .paginaprincipal-layout .card,
+.page-container .mensagens-principal .paginaprincipal-layout .card.h-100 {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-medium) !important;
+    border-radius: var(--radius) !important;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+    /* Linha de topo — aparece no hover */
+    .page-container .mensagens-principal .paginaprincipal-layout .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--brand-gradient);
+        opacity: 0;
+        transition: opacity var(--transition);
+        border-radius: var(--radius) var(--radius) 0 0;
+        z-index: 1;
+    }
+
+    /* Glow lateral esquerdo — aparece no hover */
+    .page-container .mensagens-principal .paginaprincipal-layout .card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--brand-gradient);
+        opacity: 0;
+        transition: opacity var(--transition);
+        border-radius: var(--radius) 0 0 var(--radius);
+    }
+
+    .page-container .mensagens-principal .paginaprincipal-layout .card:hover {
+        border-color: var(--border-brand-soft) !important;
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md), 0 0 0 1px var(--border-brand-soft), 0 8px 24px rgba(249, 115, 22, 0.08) !important;
+    }
+
+        .page-container .mensagens-principal .paginaprincipal-layout .card:hover::before,
+        .page-container .mensagens-principal .paginaprincipal-layout .card:hover::after {
+            opacity: 1;
+        }
+
+
+/* ── Card Body ── */
+.page-container .mensagens-principal .paginaprincipal-layout .card-body {
+    background: transparent !important;
+    padding: var(--space-5) var(--space-6) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-2) !important;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ── Card Title ── */
+.page-container .mensagens-principal .paginaprincipal-layout .card-title {
+    color: var(--text-primary) !important;
+    font-size: var(--text-base) !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    letter-spacing: -0.1px;
+    line-height: 1.35;
+    transition: color var(--transition);
+}
+
+.page-container .mensagens-principal .paginaprincipal-layout .card:hover .card-title {
+    color: #fff !important;
+}
+
+
+/* ── Card Text ── */
+.page-container .mensagens-principal .paginaprincipal-layout .card-text {
+    color: var(--text-secondary) !important;
+    font-size: var(--text-sm) !important;
+    margin: 0 !important;
+    line-height: 1.6;
+}
+
+    .page-container .mensagens-principal .paginaprincipal-layout .card-text a {
+        color: var(--brand-solid) !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        transition: color var(--transition), text-shadow var(--transition) !important;
+        position: relative;
+    }
+
+        /* Sublinhado animado nos links */
+        .page-container .mensagens-principal .paginaprincipal-layout .card-text a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--brand-light);
+            transition: width var(--transition);
+            border-radius: var(--radius-full);
+        }
+
+        .page-container .mensagens-principal .paginaprincipal-layout .card-text a:hover {
+            color: var(--brand-light) !important;
+            text-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
+        }
+
+            .page-container .mensagens-principal .paginaprincipal-layout .card-text a:hover::after {
+                width: 100%;
+            }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ENTRADA DOS CARDS (stagger)
+═══════════════════════════════════════════════════════════════ */
+@keyframes card-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mensagens-principal .paginaprincipal-layout:nth-child(1) {
+    animation: card-slide-in 0.3s ease both 0.05s;
+}
+
+.mensagens-principal .paginaprincipal-layout:nth-child(2) {
+    animation: card-slide-in 0.3s ease both 0.10s;
+}
+
+.mensagens-principal .paginaprincipal-layout:nth-child(3) {
+    animation: card-slide-in 0.3s ease both 0.15s;
+}
+
+.mensagens-principal .paginaprincipal-layout:nth-child(4) {
+    animation: card-slide-in 0.3s ease both 0.20s;
+}
+
+.mensagens-principal .paginaprincipal-layout:nth-child(5) {
+    animation: card-slide-in 0.3s ease both 0.25s;
+}
+
+.mensagens-principal .paginaprincipal-layout:nth-child(6) {
+    animation: card-slide-in 0.3s ease both 0.30s;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .page-container {
+        padding: var(--space-6) var(--space-5);
+    }
+
+    .mensagens-principal {
+        max-width: 100%;
+    }
+
+    .page-container .mensagens-principal .paginaprincipal-layout .card-body {
+        padding: var(--space-4) var(--space-5) !important;
+    }
+}
