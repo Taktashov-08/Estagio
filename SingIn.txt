@@ -1,8 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════
-   SIGN IN PAGE — Layout centrado
+   SIGNIN.CSS — Página de Autenticação Admin
+   Depende do: Global.css  |  Paleta → Orange Dark
 ═══════════════════════════════════════════════════════════════ */
 
-/* O MainContent precisa de centrar verticalmente */
+
+/* ── Wrapper centrado ── */
 #MainContent,
 .main-content-wrapper,
 .main-content {
@@ -16,7 +18,6 @@
     overflow: hidden;
 }
 
-    /* Mesh radial duplo no fundo */
     #MainContent::before,
     .main-content-wrapper::before {
         content: '';
@@ -46,9 +47,7 @@
     }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   FORM — CARD DE LOGIN
-═══════════════════════════════════════════════════════════════ */
+/* ── Card ── */
 .page-box {
     width: 100%;
     max-width: 440px;
@@ -78,7 +77,7 @@
     }
 }
 
-/* Linha brilhante no topo do card */
+/* Linha de topo */
 .page-box::before {
     content: '';
     position: absolute;
@@ -86,7 +85,7 @@
     left: 8%;
     width: 84%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(249,115,22,.45) 35%, rgba(239,68,68,.3) 65%, transparent);
+    background: linear-gradient(90deg, transparent, rgba(249,115,22,.45) 35%, rgba(239,68,68,.30) 65%, transparent);
     pointer-events: none;
 }
 
@@ -102,7 +101,8 @@
     pointer-events: none;
 }
 
-/* Logo / título do form (opcional — adiciona antes dos inputs) */
+
+/* ── Header do card (logo + título) ── */
 .page-box-header {
     text-align: center;
     display: flex;
@@ -132,7 +132,7 @@
         position: absolute;
         inset: 0;
         border-radius: inherit;
-        background: linear-gradient(160deg, rgba(255,255,255,.2) 0%, transparent 55%);
+        background: linear-gradient(160deg, rgba(255,255,255,.20) 0%, transparent 55%);
     }
 
     .page-box-brand i,
@@ -159,9 +159,7 @@
 }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   CAMPO DE INPUT
-═══════════════════════════════════════════════════════════════ */
+/* ── Input field (wrapper com label) ── */
 .page-input-box {
     display: flex;
     flex-direction: column;
@@ -170,7 +168,6 @@
     z-index: 1;
 }
 
-    /* Label */
     .page-input-box .form-label {
         font-size: 0.7rem;
         font-weight: 700;
@@ -194,7 +191,6 @@
             flex-shrink: 0;
         }
 
-    /* Input */
     .page-input-box .form-control {
         background: var(--bg-input) !important;
         border: 1px solid var(--border-strong) !important;
@@ -220,10 +216,9 @@
             border-color: var(--border-brand) !important;
             box-shadow: 0 0 0 3px rgba(249,115,22,.13) !important;
             outline: none !important;
-            background: #27251f !important;
+            background: var(--bg-input-focus) !important;
         }
 
-    /* Estado de erro (DotVVM has-error) */
     .page-input-box.has-error .form-control {
         border-color: rgba(239,68,68,.55) !important;
         box-shadow: 0 0 0 3px rgba(239,68,68,.10) !important;
@@ -233,7 +228,6 @@
         color: var(--color-danger);
     }
 
-    /* Texto de ajuda */
     .page-input-box .form-text {
         font-size: var(--text-xs);
         color: var(--text-muted);
@@ -253,9 +247,7 @@
         }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   LINHA "RELEMBRAR"
-═══════════════════════════════════════════════════════════════ */
+/* ── Remember row ── */
 .page-box-login {
     display: flex;
     align-items: center;
@@ -308,9 +300,7 @@
     }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   BOTÃO CONTAINER + BOTÃO
-═══════════════════════════════════════════════════════════════ */
+/* ── Botão submit ── */
 .btn-container {
     position: relative;
     z-index: 1;
@@ -335,7 +325,6 @@
     box-shadow: 0 4px 14px var(--brand-glow), 0 2px 4px rgba(0,0,0,.25) !important;
 }
 
-    /* Reflexo interno */
     .page-button::before {
         content: '';
         position: absolute;
@@ -348,7 +337,6 @@
         pointer-events: none;
     }
 
-    /* Shimmer sweep */
     .page-button::after {
         content: '';
         position: absolute;
@@ -377,13 +365,16 @@
     }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════════════════════ */
+/* ── Responsive ── */
 @media (max-width: 520px) {
     .page-box {
         padding: 28px 24px;
         border-radius: var(--radius-lg);
         gap: var(--space-4);
+    }
+
+    #MainContent, .main-content-wrapper {
+        align-items: flex-start;
+        padding-top: var(--space-8);
     }
 }

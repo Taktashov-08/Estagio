@@ -1,37 +1,21 @@
 /* ═══════════════════════════════════════════════════════════════
-   LOGIN PAGE PÚBLICA — Tema escuro premium
+   LOGIN.CSS — Página Pública de Login
+   Depende do: Global.css  |  Paleta → Orange Dark
 ═══════════════════════════════════════════════════════════════ */
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #111110;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-
-/* ═══════════════════════════════════════════════════════════════
-   FULL PAGE WRAPPER
-═══════════════════════════════════════════════════════════════ */
+/* ── Full-page centering wrapper ── */
 .paginalogin-form {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    background: #111110;
+    background: var(--bg-dark);
     position: relative;
     overflow: hidden;
 }
 
-    /* Mesh radial — fundo superior */
     .paginalogin-form::before {
         content: '';
         position: absolute;
@@ -44,7 +28,6 @@ body {
         pointer-events: none;
     }
 
-    /* Mesh radial — fundo inferior */
     .paginalogin-form::after {
         content: '';
         position: absolute;
@@ -58,20 +41,18 @@ body {
     }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   WRAPPER — CARD
-═══════════════════════════════════════════════════════════════ */
+/* ── Card ── */
 .wrapper {
     width: 100%;
     max-width: 420px;
-    background: #1c1b18;
-    border: 1px solid rgba(255,255,255,.07);
-    border-radius: 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-xl);
     padding: 48px 44px 40px;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.04), 0 0 70px rgba(249,115,22,.07);
+    box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255,255,255,.04), 0 0 70px rgba(249,115,22,.07);
     animation: card-appear 0.45s cubic-bezier(0.34, 1.15, 0.64, 1) both;
 }
 
@@ -87,7 +68,7 @@ body {
     }
 }
 
-/* Linha brilhante no topo */
+/* Linha de topo */
 .wrapper::before {
     content: '';
     position: absolute;
@@ -95,11 +76,11 @@ body {
     left: 8%;
     width: 84%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(249,115,22,.5) 35%, rgba(239,68,68,.35) 65%, transparent);
+    background: linear-gradient(90deg, transparent, rgba(249,115,22,.50) 35%, rgba(239,68,68,.35) 65%, transparent);
     pointer-events: none;
 }
 
-/* Glow ambiente canto superior esquerdo */
+/* Glow ambiente */
 .wrapper::after {
     content: '';
     position: absolute;
@@ -112,13 +93,11 @@ body {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   TÍTULO
-═══════════════════════════════════════════════════════════════ */
+/* ── Título ── */
 .h1-login {
     font-size: 1.6rem;
     font-weight: 800;
-    color: #f1ede8;
+    color: var(--text-primary);
     letter-spacing: -0.4px;
     margin-bottom: 32px;
     position: relative;
@@ -129,22 +108,19 @@ body {
     line-height: 1.2;
 }
 
-    /* Bolinha laranja antes do título */
     .h1-login::before {
         content: '';
         display: inline-block;
         width: 9px;
         height: 9px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #f97316, #ef4444);
-        box-shadow: 0 0 10px rgba(249,115,22,.65);
+        background: var(--brand-gradient);
+        box-shadow: 0 0 10px var(--brand-glow);
         flex-shrink: 0;
     }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   INPUT BOX
-═══════════════════════════════════════════════════════════════ */
+/* ── Input box ── */
 .input-box {
     display: flex;
     flex-direction: column;
@@ -153,22 +129,21 @@ body {
     z-index: 1;
 }
 
-    /* Input de texto */
     .input-box .form-control {
-        background: #242320 !important;
-        border: 1px solid rgba(255,255,255,.10) !important;
-        color: #f1ede8 !important;
-        border-radius: 10px !important;
+        background: var(--bg-input) !important;
+        border: 1px solid var(--border-strong) !important;
+        color: var(--text-primary) !important;
+        border-radius: var(--radius-sm) !important;
         padding: 13px 16px !important;
-        font-family: inherit !important;
-        font-size: 0.92rem !important;
+        font-family: var(--font-base) !important;
+        font-size: var(--text-base) !important;
         width: 100%;
-        transition: border-color .2s ease, box-shadow .2s ease, background .2s ease !important;
+        transition: border-color var(--transition), box-shadow var(--transition), background var(--transition) !important;
         box-shadow: none !important;
     }
 
         .input-box .form-control::placeholder {
-            color: rgba(241,237,232,.28) !important;
+            color: var(--text-disabled) !important;
         }
 
         .input-box .form-control:hover:not(:focus) {
@@ -176,22 +151,19 @@ body {
         }
 
         .input-box .form-control:focus {
-            border-color: rgba(249,115,22,.6) !important;
+            border-color: var(--border-brand) !important;
             box-shadow: 0 0 0 3px rgba(249,115,22,.13) !important;
             outline: none !important;
-            background: #28261e !important;
+            background: var(--bg-input-focus) !important;
         }
 
-    /* Estado de erro DotVVM */
     .input-box.has-error .form-control {
         border-color: rgba(239,68,68,.55) !important;
         box-shadow: 0 0 0 3px rgba(239,68,68,.10) !important;
     }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   REMEMBER / CHECKBOX
-═══════════════════════════════════════════════════════════════ */
+/* ── Remember / Forgot ── */
 .remember-forgot {
     display: flex;
     align-items: center;
@@ -205,53 +177,49 @@ body {
         display: flex;
         align-items: center;
         gap: 8px;
-        color: rgba(241,237,232,.55);
+        color: var(--text-muted);
         font-size: 0.83rem;
         font-weight: 500;
         cursor: pointer;
         user-select: none;
-        transition: color .2s;
+        transition: color var(--transition);
     }
 
         .remember-forgot label:hover {
-            color: rgba(241,237,232,.85);
+            color: var(--text-secondary);
         }
 
     .remember-forgot input[type="checkbox"] {
-        accent-color: #f97316;
+        accent-color: var(--brand-solid);
         width: 14px;
         height: 14px;
         cursor: pointer;
         flex-shrink: 0;
     }
 
-    /* Link "Esqueceu a password?" (opcional) */
     .remember-forgot a {
-        color: rgba(249,115,22,.75);
+        color: var(--brand-text);
         font-size: 0.83rem;
         font-weight: 600;
-        text-decoration: none;
-        transition: color .2s;
+        transition: color var(--transition);
     }
 
         .remember-forgot a:hover {
-            color: #f97316;
+            color: var(--brand-light);
         }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   BOTÃO LOGIN
-═══════════════════════════════════════════════════════════════ */
+/* ── Botão Login ── */
 .btn-login {
     width: 100%;
-    background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+    background: var(--brand-gradient);
     color: #fff;
     border: none;
     padding: 13px 24px;
-    font-family: inherit;
-    font-size: 0.9rem;
+    font-family: var(--font-base);
+    font-size: var(--text-sm);
     font-weight: 800;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
@@ -262,11 +230,10 @@ body {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    transition: box-shadow .2s ease, transform .2s ease, filter .2s ease;
-    box-shadow: 0 4px 16px rgba(249,115,22,.38), 0 2px 4px rgba(0,0,0,.25);
+    transition: box-shadow var(--transition), transform var(--transition), filter var(--transition);
+    box-shadow: 0 4px 16px var(--brand-glow), 0 2px 4px rgba(0,0,0,.25);
 }
 
-    /* Reflexo interno */
     .btn-login::before {
         content: '';
         position: absolute;
@@ -276,7 +243,6 @@ body {
         pointer-events: none;
     }
 
-    /* Shimmer sweep */
     .btn-login::after {
         content: '';
         position: absolute;
@@ -289,7 +255,6 @@ body {
         pointer-events: none;
     }
 
-    /* Ícone SVG dentro do botão */
     .btn-login svg {
         flex-shrink: 0;
         transition: transform .22s ease;
@@ -297,14 +262,8 @@ body {
         z-index: 1;
     }
 
-    .btn-login span,
-    .btn-login > *:not(svg):not(::before):not(::after) {
-        position: relative;
-        z-index: 1;
-    }
-
     .btn-login:hover {
-        box-shadow: 0 7px 22px rgba(249,115,22,.48), 0 3px 8px rgba(0,0,0,.3);
+        box-shadow: 0 7px 24px var(--brand-glow), 0 3px 8px rgba(0,0,0,.3);
         transform: translateY(-2px);
         filter: brightness(1.07);
     }
@@ -313,35 +272,31 @@ body {
             left: 150%;
         }
 
-        /* Ícone move-se para a direita no hover */
         .btn-login:hover svg {
             transform: translateX(4px);
         }
 
     .btn-login:active {
         transform: translateY(0) scale(0.98);
-        box-shadow: 0 2px 10px rgba(249,115,22,.38);
+        box-shadow: 0 2px 10px var(--brand-glow);
     }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   LINK DE REGISTO (bonus — se quiseres adicionar)
-═══════════════════════════════════════════════════════════════ */
+/* ── Link de registo ── */
 .login-register-link {
     text-align: center;
     margin-top: 20px;
     font-size: 0.82rem;
-    color: rgba(241,237,232,.4);
+    color: var(--text-muted);
     position: relative;
     z-index: 1;
 }
 
     .login-register-link a {
-        color: #f97316;
+        color: var(--brand-text);
         font-weight: 700;
-        text-decoration: none;
-        transition: color .2s;
         position: relative;
+        transition: color var(--transition);
     }
 
         .login-register-link a::after {
@@ -351,13 +306,13 @@ body {
             left: 0;
             width: 0;
             height: 1px;
-            background: #fb923c;
-            transition: width .2s;
+            background: var(--brand-light);
+            transition: width var(--transition);
             border-radius: 2px;
         }
 
         .login-register-link a:hover {
-            color: #fb923c;
+            color: var(--brand-light);
         }
 
             .login-register-link a:hover::after {
@@ -365,13 +320,11 @@ body {
             }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════════════════════ */
+/* ── Responsive ── */
 @media (max-width: 480px) {
     .wrapper {
         padding: 36px 24px 32px;
-        border-radius: 18px;
+        border-radius: var(--radius-lg);
     }
 
     .h1-login {
