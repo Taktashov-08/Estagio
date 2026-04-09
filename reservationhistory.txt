@@ -1,0 +1,112 @@
+/* ═══════════════════════════════════════════════════════════════
+   RESERVATIONHISTORY.CSS
+   Depende de: Global.css
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Shadow extra no hover do table-card ─────────────────── */
+.table-card {
+    transition: box-shadow var(--transition-slow);
+}
+
+.table-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* ── badge-info exclusivo desta página ───────────────────── */
+.badge-info {
+    background: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+
+.badge-info::before {
+    background: var(--color-info);
+    box-shadow: 0 0 4px rgba(103, 232, 249, .7);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BOTÃO DE NOTA
+═══════════════════════════════════════════════════════════ */
+.btn-nota {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 11px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-base);
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    background: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+    transition: background var(--transition),
+                color var(--transition),
+                border-color var(--transition),
+                transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.btn-nota:hover {
+    background: var(--color-info);
+    color: #fff;
+    border-color: var(--color-info);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(103, 232, 249, .25);
+}
+
+.btn-nota:active {
+    transform: scale(0.96);
+}
+
+/* Placeholder quando não há nota */
+.nota-vazia {
+    font-size: 0.8rem;
+    color: var(--text-muted, rgba(255, 255, 255, .3));
+    padding-left: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PAINEL EXPANDIDO DA NOTA
+═══════════════════════════════════════════════════════════ */
+.nota-expandida {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(103, 232, 249, .06);
+    border: 1px solid var(--color-info-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-top: 2px;
+    animation: notaSlide .18s ease;
+    max-width: 480px;
+}
+
+@keyframes notaSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nota-icone {
+    color: var(--color-info);
+    font-size: 0.9rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.nota-texto {
+    font-size: 0.83rem;
+    color: var(--text-primary);
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+}

@@ -1,0 +1,22 @@
+/* ═══════════════════════════════════════════════════════════════
+   ACCEPTRESERVATION.CSS
+   Depende de: Global.css  (.page-container, .page-header,
+   .table-card, .dark-table, .btn-accept, .btn-reject, .btn-view,
+   .action-btns, .table-empty)
+═══════════════════════════════════════════════════════════════ */
+
+
+/* ── Override: nesta página .btn-edit é laranja (brand), não azul ── */
+.btn-edit {
+    background: var(--brand-glow-soft);
+    color: var(--brand-solid);
+    border: 1px solid var(--border-brand-soft);
+}
+
+    .btn-edit:hover {
+        background: var(--brand-solid);
+        color: #fff;
+        border-color: var(--brand-solid);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px var(--brand-glow);
+    }

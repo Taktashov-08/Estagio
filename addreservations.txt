@@ -1,0 +1,15 @@
+/* ═══════════════════════════════════════════════════════════════
+   ADDRESERVATION.CSS
+   Depende de: Global.css  (.page-container, .page-header,
+   [class^="alert-"], .form-card, .form-row, .form-row-double,
+   .form-label-dark, .dark-input, .form-actions, .btn-orange,
+   .btn-ghost)
+═══════════════════════════════════════════════════════════════ */
+
+
+/* ── Indicador de campo obrigatório ── */
+.form-label-dark .required {
+    color: var(--color-danger);
+    font-size: 0.9em;
+    margin-left: 1px;
+}

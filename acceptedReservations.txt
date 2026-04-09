@@ -1,0 +1,341 @@
+/* ═══════════════════════════════════════════════════════════════
+   ACCEPTEDRESERVATION.CSS
+   Depende de: Global.css
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Botão de Check-out (verde) ───────────────────────────── */
+button.btn-checkout,
+.btn-checkout {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 13px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-base);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition);
+}
+
+    button.btn-checkout:hover,
+    .btn-checkout:hover {
+        background: var(--color-success);
+        color: #fff;
+        border-color: var(--color-success);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(74, 222, 128, .30);
+    }
+
+    button.btn-checkout:active,
+    .btn-checkout:active {
+        transform: scale(0.96);
+    }
+
+/* ── Alinhamento dos botões na tabela ─────────────────────── */
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ── Grupo de Confirmação de Cancelamento ─────────────────── */
+.confirm-cancel-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    animation: fadeInConfirm .15s ease;
+}
+
+@keyframes fadeInConfirm {
+    from {
+        opacity: 0;
+        transform: translateX(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.confirm-text {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-danger);
+    white-space: nowrap;
+    letter-spacing: 0.1px;
+}
+
+/* ── Botões Sim / Não ─────────────────────────────────────── */
+.btn-confirm-yes,
+.btn-confirm-no {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 11px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-base);
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    transition: all var(--transition);
+}
+
+.btn-confirm-yes {
+    background: var(--color-danger);
+    color: #fff;
+    border-color: var(--color-danger);
+}
+
+    .btn-confirm-yes:hover {
+        background: #dc2626;
+        border-color: #dc2626;
+        box-shadow: 0 4px 12px rgba(248, 113, 113, .35);
+        transform: translateY(-1px);
+    }
+
+.btn-confirm-no {
+    background: rgba(255, 255, 255, .06);
+    color: var(--text-secondary);
+    border-color: var(--border-strong);
+}
+
+    .btn-confirm-no:hover {
+        background: rgba(255, 255, 255, .12);
+        color: var(--text-primary);
+        transform: translateY(-1px);
+    }
+
+    .btn-confirm-yes:active,
+    .btn-confirm-no:active {
+        transform: scale(0.96);
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MODAL DE CHECKOUT ANTECIPADO
+═══════════════════════════════════════════════════════════════ */
+
+/* Fundo escurecido por cima de tudo */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .65);
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOverlay .2s ease;
+}
+
+@keyframes fadeOverlay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Caixa do modal */
+.modal-checkout {
+    background: var(--surface-2, #1e1e2e);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md, 12px);
+    width: 100%;
+    max-width: 480px;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+    animation: slideModal .2s ease;
+}
+
+@keyframes slideModal {
+    from {
+        opacity: 0;
+        transform: translateY(-16px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Cabeçalho do modal */
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.modal-header-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success-border);
+    color: var(--color-success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.modal-titulo {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 3px 0;
+}
+
+.modal-subtitulo {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Botão fechar (X) no canto */
+.modal-fechar {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background var(--transition);
+    flex-shrink: 0;
+}
+
+    .modal-fechar:hover {
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, .08);
+    }
+
+/* Grelha de resumo da reserva */
+.modal-resumo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid var(--border-subtle, rgba(255,255,255,.08));
+    border-radius: var(--radius-sm);
+    padding: 16px;
+}
+
+.resumo-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.resumo-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.resumo-valor {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Destaca a data de checkout previsto a amarelo */
+.checkout-previsto {
+    color: #fbbf24;
+}
+
+/* Campo de notas */
+.modal-notas-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-notas-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.modal-notas-opcional {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-muted, rgba(255,255,255,.35));
+}
+
+.modal-notas-input {
+    width: 100%;
+    min-height: 90px;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-base);
+    font-size: 0.85rem;
+    padding: 10px 12px;
+    resize: vertical;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    box-sizing: border-box;
+}
+
+    .modal-notas-input:focus {
+        outline: none;
+        border-color: var(--color-success-border);
+        box-shadow: 0 0 0 3px rgba(74, 222, 128, .12);
+    }
+
+    .modal-notas-input::placeholder {
+        color: var(--text-muted, rgba(255,255,255,.3));
+    }
+
+/* Aviso de irreversibilidade */
+.modal-aviso {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(251, 191, 36, .08);
+    border: 1px solid rgba(251, 191, 36, .25);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 0.78rem;
+    color: #fbbf24;
+    font-weight: 500;
+}
+
+/* Botões do modal */
+.modal-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-btn-cancelar {
+    padding: 7px 18px;
+    font-size: 0.82rem;
+}
+
+.modal-btn-confirmar {
+    padding: 7px 20px;
+    font-size: 0.82rem;
+}

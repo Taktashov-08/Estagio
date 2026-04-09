@@ -1,0 +1,21 @@
+/* ═══════════════════════════════════════════════════════════════
+   OVERRIDES & ELEMENTOS ÚNICOS DA PÁGINA
+═══════════════════════════════════════════════════════════════ */
+
+/* Override da largura do card [cite: 270, 428] */
+.form-card {
+    max-width: 620px;
+}
+
+/* Layout específico em duas colunas para esta reserva [cite: 279] */
+.form-row-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+}
+
+@media (max-width: 520px) {
+    .form-row-cols {
+        grid-template-columns: 1fr;
+    }
+}
